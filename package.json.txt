@@ -1,0 +1,20 @@
+{
+  "name": "playwright-framework",
+  "version": "2.0.0",
+  "description": "Enterprise-grade Playwright Test Automation Framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "report": "npx playwright show-report",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@types/node": "^20.4.0",
+    "typescript": "^5.2.2",
+    "eslint": "^8.47.0",
+    "prettier": "^3.10.0"
+  }
+}

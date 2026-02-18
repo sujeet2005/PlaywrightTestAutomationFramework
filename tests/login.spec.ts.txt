@@ -1,0 +1,20 @@
+import { test, expect } from '@playwright/test';
+import { LoginPage } from '@pages/LoginPage';
+import { config } from '@utils/config';
+
+test.describe('Login Tests', () => {
+  test('Invalid login shows error', async ({ page }) => {
+    const loginPage = new LoginPage(page);
+    await loginPage.goto();
+    await loginPage.login('invalid_user', 'wrong_pass');
+    const error = await loginPage.getErrorMessage();
+    expect(error).toContain('Invalid credentials');
+  });
+
+  test('Valid login redirects to dashboard', async ({ page }) => {
+    const loginPage = new LoginPage(page);
+    await loginPage.goto();
+    await loginPage.login(config.users.admin.username, config.users.admin.password);
+    await expect(page).toHaveURL(/dashboard/);
+  });
+});
